@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #efe9dc;
+  --ink: #14110f;
+  --red: #a3201a;
+  --orange: #d9772b;
+  --muted: #6f665c;
+  --ai-lab-bg: #0c0908;
+  --texture-opacity: 0.05;
+  --texture-blend: multiply;
+  --flow-ink: #14110f;
+}
+
+.dark {
+  --bg: #0e0c0b;
+  --ink: #ece4d6;
+  --red: #c9382e;
+  --orange: #e58b3a;
+  --muted: #968c7e;
+  --ai-lab-bg: #0c0908;
+  --texture-opacity: 0.035;
+  --texture-blend: screen;
+  --flow-ink: #ece4d6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-instrument), Georgia, serif;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+}
+
+/* Atmospheric Paper Texture Overlay */
+.paper-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: var(--texture-opacity);
+  mix-blend-mode: var(--texture-blend);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 2px;
+}
+
+/* Typography Utility Classes */
+.font-display {
+  font-family: var(--font-anton), sans-serif;
+  text-transform: uppercase;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+}
+
+.font-editorial {
+  font-family: var(--font-instrument), serif;
+}
+
+.font-technical {
+  font-family: var(--font-ibm-plex), monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.font-handwritten {
+  font-family: var(--font-caveat), cursive;
+  font-weight: 700;
+  color: var(--red);
+}
+
+/* Atmospheric Name Mark Mask */
+.name-mask-svg {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* SVG Line Animation */
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.animate-stroke {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: drawLine 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
